@@ -50,6 +50,7 @@ const quizQuestions = [
 ];
 
 let currentQuestionIndex = 0;
+let score = 0;
 
 function showQuiz() {
     const questionElement = document.getElementById("question");
@@ -73,12 +74,15 @@ function showQuiz() {
 
 function checkAnswer(isCorrect) {
     alert(isCorrect ? "YUP!" : "NOPE!");
+    if (isCorrect === true){
+        score++;
+    }
     currentQuestionIndex++;
 
     if (currentQuestionIndex < quizQuestions.length) {
         showQuiz();
     } else {
-        document.getElementById("question").innerText = "Quiz Complete!";
+        document.getElementById("question").innerText = "Quiz Complete! Your score is: " + score + "/" + quizQuestions.length;
         document.getElementById("answerButton").innerHTML = "";
     }
 }
